@@ -25,6 +25,13 @@ class VsExerciseApplicationTests {
 	fun testValidateAge3() {
 		val today: LocalDate = LocalDate.now()
 		val ec: VSExerciseController = VSExerciseController()
+		assert(!ec.validateAge(today.minusYears(20).toString()) )
+	}
+
+	@Test
+	fun testValidateAge4() {
+		val today: LocalDate = LocalDate.now()
+		val ec: VSExerciseController = VSExerciseController()
 		assert(!ec.validateAge(today.plusDays(2).toString()))
 	}
 
