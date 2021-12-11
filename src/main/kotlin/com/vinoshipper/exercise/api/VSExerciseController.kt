@@ -9,7 +9,7 @@ import java.time.LocalDate
 import java.time.Month
 import java.time.DayOfWeek
 
-val DRINKING_AGE: Long = 21
+val DRINKING_AGE_YEARS: Long = 21
 
 val HOURS_IN_A_WEEKDAY: Int = 8
 
@@ -19,7 +19,7 @@ class VSExerciseController() {
     @GetMapping("/validate-age")
     fun validateAge(@RequestParam(value = "birthday", defaultValue = "") birthday: String): Boolean {
         val birthdayDate: LocalDate = LocalDate.parse(birthday)
-        var drinkingDate: LocalDate = birthdayDate.plusYears(DRINKING_AGE)
+        var drinkingDate: LocalDate = birthdayDate.plusYears(DRINKING_AGE_YEARS)
         if (birthdayDate.isLeapYear() && birthdayDate.getMonth() == Month.FEBRUARY && birthdayDate.getDayOfMonth() == 29 && drinkingDate.getMonth() == Month.FEBRUARY) {
             drinkingDate = drinkingDate.plusDays(1)
         }
